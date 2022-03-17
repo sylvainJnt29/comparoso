@@ -6,3 +6,7 @@ form{
     display: flex;
     justify-content: center;
 }
+#formulaire{
+    display: flex;
+    justify-content: space-around;
+}
