@@ -1,37 +1,42 @@
-/* Problème : certains ARIs ne répondent pas à Salt ( donc absent de la liste Salt) MAIS sont présents sur le réseau (présent sur NMAP)
+/* SJ - 03/22 - comparOso
+*****************************
+
+Problème : certains ARIs ne répondent pas à Salt ( donc absent de la liste Salt) MAIS sont présents sur le réseau (présent sur NMAP)
 IL faut trouver ces ARIS présent dans la liste FLEET et PAS présent dans la liste Salt
-Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt */
+Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt 
+
+*/
 
 
 
 
 // // Fonction principale de comparaison des textes entrés:
-function check(){
-    var entreeFleet = document.getElementById('texte1').value;
-    var entreeSalt = document.getElementById('texte2').value;
-    var entreeNmap = document.getElementById('texte3').value;
+// function check(){
+//     var entreeFleet = document.getElementById('texte1').value;
+//     var entreeSalt = document.getElementById('texte2').value;
+//     var entreeNmap = document.getElementById('texte3').value;
 
-    if(entreeFleet && entreeSalt && entreeNmap != ""){
+//     if(entreeFleet && entreeSalt && entreeNmap != ""){
 
-    // document.getElementById('reponse').innerHTML = entreeFleet.slice(13,21);
-    // document.getElementById('reponse2').innerHTML = entreeFleet.slice(35,44);
-    // document.getElementById('reponse3').innerHTML = entreeFleet.slice(57,65);
+//     // document.getElementById('reponse').innerHTML = entreeFleet.slice(13,21);
+//     // document.getElementById('reponse2').innerHTML = entreeFleet.slice(35,44);
+//     // document.getElementById('reponse3').innerHTML = entreeFleet.slice(57,65);
 
 
-    // Automatiser cela !
-    var extractionFleet = entreeFleet.substring(13,21);
-    document.getElementById('reponse').innerHTML = extractionFleet;
-    var extractionSalt = entreeSalt.substring(12,20);
-    document.getElementById('reponse2').innerHTML = extractionSalt;
-    if (extractionFleet !== extractionSalt){
-        document.getElementById('reponse3').innerHTML = "<h2>fleet et salt ne correspondent pas</h2>";
-    } else {
-        document.getElementById('reponse3').innerHTML = "<h2>fleet et salt correspondent</h2>";
-        }
-    } else {
-    alert("Un problème de copier/coller ?? ")
-        }
-    }
+//     // Automatiser cela !
+//     var extractionFleet = entreeFleet.substring(13,21);
+//     document.getElementById('reponse').innerHTML = extractionFleet;
+//     var extractionSalt = entreeSalt.substring(12,20);
+//     document.getElementById('reponse2').innerHTML = extractionSalt;
+//     if (extractionFleet !== extractionSalt){
+//         document.getElementById('reponse3').innerHTML = "<h2>fleet et salt ne correspondent pas</h2>";
+//     } else {
+//         document.getElementById('reponse3').innerHTML = "<h2>fleet et salt correspondent</h2>";
+//         }
+//     } else {
+//     alert("Un problème de copier/coller ?? ")
+//         }
+//     }
 
 
 // function check(){
@@ -46,27 +51,27 @@ function check(){
 
 
 
-function checkNbArisSalt(){
-    var entreeSalt = document.getElementById('texte2').value;
-    var count = 0;
-    var pos = entreeSalt.indexOf("ARI-00000000");
-    while( pos != -1 ){
-        count++;
-        pos = entreeSalt.indexOf("ARI-00000000", pos + 1);
-    }
-    document.getElementById('reponse').innerHTML = "Il y a actuellement " + count + " ARIs dans la liste Salt.";
-}
+// function checkNbArisSalt(){
+//     var entreeSalt = document.getElementById('texte2').value;
+//     var count = 0;
+//     var pos = entreeSalt.indexOf("ARI-00000000");
+//     while( pos != -1 ){
+//         count++;
+//         pos = entreeSalt.indexOf("ARI-00000000", pos + 1);
+//     }
+//     document.getElementById('reponse').innerHTML = "Il y a actuellement " + count + " ARIs dans la liste Salt.";
+// }
 
-function checkNbArisNmap(){
-    var entreeNmap = document.getElementById('texte3').value;
-    var count = 0;
-    var pos = entreeNmap.indexOf("ARI-00000000");
-    while( pos != -1 ){
-        count++;
-        pos = entreeNmap.indexOf("ARI-00000000", pos + 1);
-    }
-    document.getElementById('reponse2').innerHTML = "Il y a actuellement " + count + " ARIs dans la liste Nmap.";
-}
+// function checkNbArisNmap(){
+//     var entreeNmap = document.getElementById('texte3').value;
+//     var count = 0;
+//     var pos = entreeNmap.indexOf("ARI-00000000");
+//     while( pos != -1 ){
+//         count++;
+//         pos = entreeNmap.indexOf("ARI-00000000", pos + 1);
+//     }
+//     document.getElementById('reponse2').innerHTML = "Il y a actuellement " + count + " ARIs dans la liste Nmap.";
+// }
 
 
 // function checkTest(){
@@ -138,47 +143,66 @@ function checkNbArisNmap(){
 // }
 
 function checkTest(){
+
+    //  Les regExp
     // var regexFleet = /[#][\w]{3}[\n]([\w]*)/;
     var regexFleet = /[\w]{8}[\n]/;
-    var regexSaltNmap = /[\w]{8}[\n]/;
+    // var regexFleet = new RegExp ("/[\w]{8}[\n]/");
+    var regexSaltNmap = /[a-z0-9]{8}/;
+    // [^A-Z: -0{8}]
+
+    // Récupération des entrées
     var entreeFleet = document.getElementById('texte1').value;
     var entreeSalt = document.getElementById('texte2').value;
     var entreeNmap = document.getElementById('texte3').value;
 
+    // Utilisation d'une regExp
     var testRegexFleet = regexFleet.exec(entreeFleet);
-    var testRegexSalt = regexFleet.exec(entreeSalt);
-    var testRegexNmap = regexFleet.exec(entreeNmap);
+    var testRegexSalt = regexSaltNmap.exec(entreeSalt);
+    var testRegexNmap = regexSaltNmap.exec(entreeNmap);
 
-    document.getElementById('reponse4').innerHTML = entreeFleet;
-    document.getElementById('reponse5').innerHTML = entreeSalt;
-    document.getElementById('reponse6').innerHTML = entreeNmap;
 
+    // Affichage du retour de la saisie ( test )
+    document.getElementById('reponse').innerHTML = entreeFleet;
+    document.getElementById('reponse2').innerHTML = entreeSalt;
+    document.getElementById('reponse').innerHTML = entreeNmap;
+
+
+    // Tests transmission regExp ( fonctionne )
     alert(testRegexFleet);
     alert(testRegexSalt);
     alert(testRegexNmap);
+
+
+    if(testRegexFleet === testRegexSalt === testRegexNmap){
+        alert('ça match !');
+    } else {
+        alert('ça match pôooo !');
+    }
+
+
+    // Parcourir le taleau de entreeFleet et ressortir les regExp:
+
+    // var length = entreeFleet.length;
+    // for ( var i = 0; i < length; i++){
+    //     regexFleet.exec(entreeFleet)
+    //     console.log(regexFleet[i]);
+    // }
+
+
+    // for (var i = 0; i<entreeFleet.length; i++){
+    //     // var testRegexFleet = regexFleet.exec(entreeFleet);
+    //     alert(testRegexFleet);
+    // }
+
+    // while(testRegexFleet != null){
+    //     console.log(testRegexFleet[0]);
+    //     alert(testRegexFleet[0]);
+    //     // testRegexFleet=regexFleet.exec(entreeFleet);
+    // }
+
+
+
     
 }
-
-    
-
-// function checkTest(){
-
-//     var regexFleet = /[\w]{8}[\n]/;
-//     var regexSaltNmap = "prout";
-//     var entreeFleet = document.getElementById('texte1').value;
-//     var entreeSalt = document.getElementById('texte2').value;
-//     var entreeNmap = document.getElementById('texte3').value;
-//     var matches = entreeFleet.matchAll(regexFleet);
-
-//     // for (var match of matches){
-//     //     console.log(match);
-//     //     console.log(match.index);
-//     // }
-
-
-//     document.getElementById('reponse4').innerHTML = entreeFleet;
-//     document.getElementById('reponse5').innerHTML = entreeSalt;
-//     document.getElementById('reponse6').innerHTML = entreeNmap;
-
-// }
 
