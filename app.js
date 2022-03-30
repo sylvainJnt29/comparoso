@@ -12,7 +12,7 @@ Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt
 
     // Les regExp
     // var regexFleet = /[#][\w]{3}[\n]([\w]*)/;
-    var regexFleet = /[\w]{8}[\n]/;
+    var regexFleet = /[\w]{8}[\n]/g;
     // var regexFleet = new RegExp ("/[\w]{8}[\n]/");
     var regexSaltNmap = /[a-z0-9]{8}/;
     // [^A-Z: -0{8}]
@@ -35,11 +35,34 @@ Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt
     document.getElementById('reponse2').innerHTML = entreeSalt;
     document.getElementById('reponse3').innerHTML = entreeNmap;
 
+    // tabFleet.push(testRegexFleet);
+    // alert("Voici le tableau de fleet :" + tabFleet + " contenant : " + tabFleet.length + " entrée(s) ^^");
 
     // Zone de test
     function checkTest(){
-        alert(testRegexFleet);
-    }
+
+        var length = entreeFleet.length;
+        let i=0;
+
+        // while(i<length){
+        //     tabFleet.push(testRegexFleet);
+        //     console.log(entreeFleet[i]);
+        //     i++;
+        // }
+
+        var maRegex = /[\w]{8}[\n]/g;
+        var str = entreeFleet;
+        var monTableau;
+        while ((monTableau = maRegex.exec(str)) !== null) {
+        var msg = 'Trouvé ' + monTableau[0];
+        msg += 
+        console.log(msg);
+        }
+        console.log("Nombre de ARI(s) extrait(s) de la liste fleet : " + msg.length);
+}
+
+
+    
     
 
 
