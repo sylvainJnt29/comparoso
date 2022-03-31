@@ -7,6 +7,11 @@ Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt
 
 
 ! Manque le dernier [i] de tabFleet !
+
+
+regexSalt
+regexNmap
+
         
 A CREUSER:
 L'utilisation du constructeur new serait plus indiquée pour la recherche de caractères 
@@ -44,8 +49,8 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
     document.getElementById('reponse3').innerHTML = entreeNmap;
 
 
-    // Zone de test
-    function checkTest(){
+
+    function check(){
 
         // On parcours et on enregistre dans "tabFleet" les N° des ARIs trouvés dans la liste fleet
         var fleetRegex = /[\w]{8}[\n]/g;
@@ -54,10 +59,10 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         var tabFleet=[""];
 
         while ((monTableauFleet = fleetRegex.exec(fleetStr)) !== null) {
-        var msg = 'Trouvé dans fleet ' + monTableauFleet[0];
+        var fleetMsg = 'Trouvé dans fleet ' + monTableauFleet[0];
         tabFleet.push(monTableauFleet[0]);
-        msg +=
-        console.log(msg);
+        fleetMsg +=
+        console.log(fleetMsg);
         }
         alert("Nombre de ARI(s) extrait(s) de la liste fleet : " + tabFleet.length);
 
@@ -68,10 +73,10 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         var tabSalt=[""];
 
         while ((monTableauSalt = saltRegex.exec(saltStr)) !== null) {
-        var msg = 'Trouvé dans salt ' + monTableauSalt[0];
+        var saltMsg = 'Trouvé dans salt ' + monTableauSalt[0];
         tabSalt.push(monTableauSalt[0]);
-        msg +=
-        console.log(msg);
+        saltMsg +=
+        console.log(saltMsg);
         }
         alert("Nombre de ARI(s) extrait(s) de la liste salt : " + tabSalt.length);
 
@@ -82,21 +87,36 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         var tabNmap=[""];
 
         while ((monTableauNmap = nmapRegex.exec(nmapStr)) !== null) {
-        var msg = 'Trouvé dans nmap ' + monTableauNmap[0];
+        var nmapMsg = 'Trouvé dans nmap ' + monTableauNmap[0];
         tabNmap.push(monTableauNmap[0]);
-        msg +=
-        console.log(msg);
+        nmapMsg +=
+        console.log(nmapMsg);
         }
         alert("Nombre de ARI(s) extrait(s) de la liste nmap : " + tabNmap.length);
 
 
         // Comparaison des correspondances des tableaux fleet et salt:
+        // => IL faut trouver ces ARIS présent dans la liste FLEET et PAS présent dans la liste Salt
+
+        var a1 = [tabFleet];
+        var a2 = [tabSalt];
+        var a3 = [tabNmap];
+
+        console.log("Compare a1 et a2", JSON.stringify(a1) === JSON.stringify(a2));
+        console.log("Compare a2 et a3", JSON.stringify(a2) === JSON.stringify(a3));
+
+
+
+
+
 
         // Comparaison des correspondances des tableaux salt et nmap:
+        // => Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt 
 
 
+    }
 
-}
+
 
 
     
