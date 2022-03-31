@@ -5,17 +5,25 @@ Problème : certains ARIs ne répondent pas à Salt ( donc absent de la liste Sa
 IL faut trouver ces ARIS présent dans la liste FLEET et PAS présent dans la liste Salt
 Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt 
 
+
+! Manque le dernier [i] de tabFleet !
+        
+A CREUSER:
+L'utilisation du constructeur new serait plus indiquée pour la recherche de caractères 
+
 */
 
 
 
 
     // Les regExp
-    // var regexFleet = /[#][\w]{3}[\n]([\w]*)/;
+
     var regexFleet = /[\w]{8}[\n]/g;
     // var regexFleet = new RegExp ("/[\w]{8}[\n]/");
     var regexSaltNmap = /[a-z0-9]{8}/;
     // [^A-Z: -0{8}]
+
+
     var tabFleet=[];
     var tabSalt=[];
     var tabNmap=[];
@@ -35,30 +43,59 @@ Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt
     document.getElementById('reponse2').innerHTML = entreeSalt;
     document.getElementById('reponse3').innerHTML = entreeNmap;
 
-    // tabFleet.push(testRegexFleet);
-    // alert("Voici le tableau de fleet :" + tabFleet + " contenant : " + tabFleet.length + " entrée(s) ^^");
 
     // Zone de test
     function checkTest(){
 
-        var length = entreeFleet.length;
-        let i=0;
+        // On parcours et on enregistre dans "tabFleet" les N° des ARIs trouvés dans la liste fleet
+        var fleetRegex = /[\w]{8}[\n]/g;
+        var fleetStr = entreeFleet;
+        var monTableauFleet=[""];
+        var tabFleet=[""];
 
-        // while(i<length){
-        //     tabFleet.push(testRegexFleet);
-        //     console.log(entreeFleet[i]);
-        //     i++;
-        // }
-
-        var maRegex = /[\w]{8}[\n]/g;
-        var str = entreeFleet;
-        var monTableau;
-        while ((monTableau = maRegex.exec(str)) !== null) {
-        var msg = 'Trouvé ' + monTableau[0];
-        msg += 
+        while ((monTableauFleet = fleetRegex.exec(fleetStr)) !== null) {
+        var msg = 'Trouvé dans fleet ' + monTableauFleet[0];
+        tabFleet.push(monTableauFleet[0]);
+        msg +=
         console.log(msg);
         }
-        console.log("Nombre de ARI(s) extrait(s) de la liste fleet : " + msg.length);
+        alert("Nombre de ARI(s) extrait(s) de la liste fleet : " + tabFleet.length);
+
+        // On parcours et on enregistre dans "tabSalt" les N° des ARIs trouvés dans la liste salt
+        var saltRegex = /[a-z0-9]{8}/g;
+        var saltStr = entreeSalt;
+        var monTableauSalt=[""];
+        var tabSalt=[""];
+
+        while ((monTableauSalt = saltRegex.exec(saltStr)) !== null) {
+        var msg = 'Trouvé dans salt ' + monTableauSalt[0];
+        tabSalt.push(monTableauSalt[0]);
+        msg +=
+        console.log(msg);
+        }
+        alert("Nombre de ARI(s) extrait(s) de la liste salt : " + tabSalt.length);
+
+        // On parcours et on enregistre dans "tabNmap" les N° des ARIs trouvés dans la liste Nmap
+        var nmapRegex = /[a-z0-9]{8}/g;
+        var nmapStr = entreeNmap;
+        var monTableauNmap=[""];
+        var tabNmap=[""];
+
+        while ((monTableauNmap = nmapRegex.exec(nmapStr)) !== null) {
+        var msg = 'Trouvé dans nmap ' + monTableauNmap[0];
+        tabNmap.push(monTableauNmap[0]);
+        msg +=
+        console.log(msg);
+        }
+        alert("Nombre de ARI(s) extrait(s) de la liste nmap : " + tabNmap.length);
+
+
+        // Comparaison des correspondances des tableaux fleet et salt:
+
+        // Comparaison des correspondances des tableaux salt et nmap:
+
+
+
 }
 
 
