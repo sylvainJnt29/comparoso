@@ -52,7 +52,7 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
 
     function check(){
 
-        // On parcours et on enregistre dans "tabFleet" les N° des ARIs trouvés dans la liste fleet
+        // On parcourt et on enregistre dans "tabFleet" les N° des ARIs trouvés dans la liste fleet
         var fleetRegex = /[\w]{8}[\n]/g;
         var fleetStr = entreeFleet;
         var monTableauFleet=[""];
@@ -66,8 +66,8 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         }
         alert("Nombre de ARI(s) extrait(s) de la liste fleet : " + tabFleet.length);
 
-        // On parcours et on enregistre dans "tabSalt" les N° des ARIs trouvés dans la liste salt
-        var saltRegex = /[a-z0-9]{8}/g;
+        // On parcourt et on enregistre dans "tabSalt" les N° des ARIs trouvés dans la liste salt
+        var saltRegex = /[0-9A-Za-z]{8}:/g;
         var saltStr = entreeSalt;
         var monTableauSalt=[""];
         var tabSalt=[""];
@@ -80,8 +80,8 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         }
         alert("Nombre de ARI(s) extrait(s) de la liste salt : " + tabSalt.length);
 
-        // On parcours et on enregistre dans "tabNmap" les N° des ARIs trouvés dans la liste Nmap
-        var nmapRegex = /[a-z0-9]{8}/g;
+        // On parcourt et on enregistre dans "tabNmap" les N° des ARIs trouvés dans la liste Nmap
+        var nmapRegex = /[0-9A-Za-z]{8} /g;
         var nmapStr = entreeNmap;
         var monTableauNmap=[""];
         var tabNmap=[""];
@@ -93,17 +93,17 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         console.log(nmapMsg);
         }
         alert("Nombre de ARI(s) extrait(s) de la liste nmap : " + tabNmap.length);
-
+        alert(tabNmap);
 
         // Comparaison des correspondances des tableaux fleet et salt:
         // => IL faut trouver ces ARIS présent dans la liste FLEET et PAS présent dans la liste Salt
 
-        var a1 = [tabFleet];
-        var a2 = [tabSalt];
-        var a3 = [tabNmap];
+        // var a1 = [tabFleet];
+        // var a2 = [tabSalt];
+        // var a3 = [tabNmap];
 
-        console.log("Compare a1 et a2", JSON.stringify(a1) === JSON.stringify(a2));
-        console.log("Compare a2 et a3", JSON.stringify(a2) === JSON.stringify(a3));
+        // console.log("Compare a1 et a2", JSON.stringify(a1) === JSON.stringify(a2));
+        // console.log("Compare a2 et a3", JSON.stringify(a2) === JSON.stringify(a3));
 
 
 
