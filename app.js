@@ -54,7 +54,9 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
     function check(){
 
         // On parcourt et on enregistre dans "tabFleet" les N° des ARIs trouvés dans la liste fleet
-        var fleetRegex = /[\w]{8}[\n]/g;
+        // var fleetRegex = /[\w]{8}[\n]/g;
+        // var fleetRegex = /[\w]{8}/g;
+        var fleetRegex = /[^test_tube,warning,:,Ch.#][\w]{8}/g;
         var fleetStr = entreeFleet;
         var monTableauFleet=[""];
         var tabFleet=[""];
@@ -65,7 +67,7 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         fleetMsg +=
         console.log(fleetMsg);
         }
-        alert("Nombre de ARI(s) extrait(s) de la liste fleet : " + tabFleet.length);
+        alert("Nombre de ARI(s) extrait(s) de la liste fleet : " + (tabFleet.length-1));
 
         // On parcourt et on enregistre dans "tabSalt" les N° des ARIs trouvés dans la liste salt
         // var saltRegex = /[0-9A-Za-z]{8}:/g;
@@ -80,7 +82,7 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         saltMsg +=
         console.log(saltMsg);
         }
-        alert("Nombre de ARI(s) extrait(s) de la liste salt : " + tabSalt.length);
+        alert("Nombre de ARI(s) extrait(s) de la liste salt : " + (tabSalt.length-1));
 
         // On parcourt et on enregistre dans "tabNmap" les N° des ARIs trouvés dans la liste Nmap
         // var nmapRegex = /[0-9A-Za-z]{8} /g;
@@ -98,7 +100,7 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         nmapMsg +=
         console.log(nmapMsg);
         }
-        alert("Nombre de ARI(s) extrait(s) de la liste nmap : " + tabNmap.length);
+        alert("Nombre de ARI(s) extrait(s) de la liste nmap : " + (tabNmap.length-1));
         alert(tabFleet);
         alert(tabSalt);
         alert(tabNmap);
@@ -115,12 +117,9 @@ L'utilisation du constructeur new serait plus indiquée pour la recherche de car
         // console.log("Compare a2 et a3", JSON.stringify(a2) === JSON.stringify(a3));
 
         // regrouper deux tableaux dans un seul => utilité ?
-        Array.prototype.push.apply(tabFleet, tabSalt);
-        alert(tabFleet);
-        alert(tabFleet.sort());
-
-
-
+        // Array.prototype.push.apply(tabFleet, tabSalt);
+        // alert(tabFleet);
+        // alert(tabFleet.sort());
 
         // Comparaison des correspondances des tableaux salt et nmap:
         // => Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt 
