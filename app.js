@@ -91,7 +91,7 @@ Notes: Ameliorer #reponse3 et #reponse4
 
         document.getElementById('reponse2').innerHTML += "Nombre de ARI(s) extrait(s) de la liste fleet : <b>"
                                                       +(tabFleet.length-1)+"</b>";
-        document.getElementById('reponse2').innerHTML += "<h2>Extrait de fleet :</h2>" + tabFleet;
+        document.getElementById('reponse2').innerHTML += "<h2>Extrait de fleet :</h2>" + tabFleet + "<hr>";
 
         document.getElementById('reponse3').innerHTML += "Nombre de ARI(s) extrait(s) de la liste salt : <b>"
                                                       +(tabSalt.length-1)+"</b>";
@@ -108,7 +108,7 @@ Notes: Ameliorer #reponse3 et #reponse4
 
         // Zone de test:
         document.getElementById('reponse3').innerHTML += "<h2>ARIS présents dans la liste fleet et non présents dans la liste salt:</h2>";
-        document.getElementById('reponse3').innerHTML += "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+        document.getElementById('reponse3').innerHTML += "Lorem ipsum dolor sit amet consectetur adipisicing elit.<hr>";
 
 
 
@@ -118,9 +118,13 @@ Notes: Ameliorer #reponse3 et #reponse4
 
         // Zone de test:
         document.getElementById('reponse4').innerHTML += "<h2>ARIS présents dans la liste nmap et non présents dans la liste salt:</h2>";
-        document.getElementById('reponse4').innerHTML += "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+        document.getElementById('reponse4').innerHTML += "Lorem ipsum dolor sit amet consectetur adipisicing elit.<hr>";
 
-    }
+        // Conclusion finale: ( si besoin )
+        // document.getElementById('reponse5').innerHTML = "<h2>Pour conclure :</h2>";
+
+
+    }   
 
 
 
