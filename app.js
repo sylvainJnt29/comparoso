@@ -5,126 +5,125 @@ Problème : certains ARIs ne répondent pas à Salt ( donc absent de la liste Sa
 IL faut trouver ces ARIS présent dans la liste FLEET et PAS présent dans la liste Salt
 Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt 
 
-Reste à faire:
-! https://openclassrooms.com/forum/sujet/javascript-comparaison-de-deux-tableaux !
-=> méthode filter 
 
 Notes: Ameliorer #reponse3 et #reponse4
         => Mise en page sur du innerHTML
 
-    // regrouper deux tableaux dans un seul => utilité ?
-    // Array.prototype.push.apply(tabFleet, tabSalt);
-    // alert(tabFleet);
-    // alert(tabFleet.sort());
-
-
 */
 
-    // Déclaration des tableaux
+// Déclaration des tableaux
+var tabFleet=[];
+var tabSalt=[];
+var tabNmap=[];
+
+// Récupération des entrées
+var entreeFleet = document.getElementById('texte1').value;
+var entreeSalt = document.getElementById('texte2').value;
+var entreeNmap = document.getElementById('texte3').value;
+
+function check(){
+
+    // On parcourt et on enregistre dans "tabFleet" les N° des ARIs trouvés dans la liste fleet
+    const fleetRegex = /^[\w]{8}/gm;
+    const saltNmapRegex = /((?<=00000000)[\w]{8})/g;
+    var fleetStr = entreeFleet;
+    var monTableauFleet=[];
     var tabFleet=[];
+
+
+    while ((monTableauFleet = fleetRegex.exec(fleetStr)) !== null) {
+    var fleetMsg = 'Trouvé dans fleet ' + monTableauFleet[0];
+    tabFleet.push(monTableauFleet[0]);
+    fleetMsg +=
+    console.log(fleetMsg);
+    }
+
+
+    // On parcourt et on enregistre dans "tabSalt" les N° des ARIs trouvés dans la liste salt
+    var saltStr = entreeSalt;
+    var monTableauSalt=[];
     var tabSalt=[];
+
+    while ((monTableauSalt = saltNmapRegex.exec(saltStr)) !== null) {
+    var saltMsg = 'Trouvé dans salt ' + monTableauSalt[0];
+    tabSalt.push(monTableauSalt[0]);
+    saltMsg +=
+    console.log(saltMsg);
+    }
+
+
+    // On parcourt et on enregistre dans "tabNmap" les N° des ARIs trouvés dans la liste Nmap
+    var nmapStr = entreeNmap;
+    var monTableauNmap=[];
     var tabNmap=[];
 
-    // Récupération des entrées
-    var entreeFleet = document.getElementById('texte1').value;
-    var entreeSalt = document.getElementById('texte2').value;
-    var entreeNmap = document.getElementById('texte3').value;
-
-    // Utilisation d'une regExp
-    // var testRegexFleet = regexFleet.exec(entreeFleet);
-    // var testRegexSalt = regexSaltNmap.exec(entreeSalt);
-    // var testRegexNmap = regexSaltNmap.exec(entreeNmap);
-
-    // // Affichage du retour de la saisie ( test )
-    // document.getElementById('reponse').innerHTML = entreeFleet;
-    // document.getElementById('reponse2').innerHTML = entreeSalt;
-    // document.getElementById('reponse3').innerHTML = entreeNmap;
+    while ((monTableauNmap = saltNmapRegex.exec(nmapStr)) !== null) {
+    var nmapMsg = 'Trouvé dans nmap ' + monTableauNmap[0];
+    tabNmap.push(monTableauNmap[0]);
+    nmapMsg +=
+    console.log(nmapMsg);
+    }
 
 
+    // Affichage des résultats
+    document.getElementById('reponse').innerHTML = "<h1>Les résultats :</h1>";
 
-    function check(){
+    document.getElementById('reponse2').innerHTML += "Nombre de ARI(s) extrait(s) de la liste fleet : <b>"
+                                                  +(tabFleet.length)+"</b>";
+    document.getElementById('reponse2').innerHTML += "<h2>Extrait de fleet :</h2>" + tabFleet + "<hr>";
 
-        // On parcourt et on enregistre dans "tabFleet" les N° des ARIs trouvés dans la liste fleet
-        var fleetRegex = /[^test_tube,warning:Ch.#][\w]{8}/g;
-        var fleetStr = entreeFleet;
-        var monTableauFleet=[""];
-        var tabFleet=[""];
+    document.getElementById('reponse3').innerHTML += "Nombre de ARI(s) extrait(s) de la liste salt : <b>"
+                                                  +(tabSalt.length)+"</b>";
+    document.getElementById('reponse3').innerHTML += "<h2>Extrait de salt :</h2>" + tabSalt;
+    
+    // Comparaison des correspondances des tableaux fleet et salt:
+    // => IL faut trouver les ARIs présents dans la liste FLEET et non présents dans la liste Salt
+    document.getElementById('reponse3').innerHTML += "<h2>ARI(s) présent(s) dans la liste fleet et non présent(s) dans la liste salt:</h2>";
 
-        while ((monTableauFleet = fleetRegex.exec(fleetStr)) !== null) {
-        var fleetMsg = 'Trouvé dans fleet ' + monTableauFleet[0];
-        tabFleet.push(monTableauFleet[0]);
-        fleetMsg +=
-        console.log(fleetMsg);
+    let missingSaltsInFleet = [];
+    for (let i = 0 ; i<tabFleet.length ; i++){
+        let found = false;
+        for(let j = 0 ; j<tabSalt.length ; j++){
+            if(tabFleet[i]==tabSalt[j]){
+                found = true;
+                continue;
+            }
         }
-
-
-        // On parcourt et on enregistre dans "tabSalt" les N° des ARIs trouvés dans la liste salt
-        var saltRegex = /((?<=00000000)[\w]{8})/g;
-        var saltStr = entreeSalt;
-        var monTableauSalt=[""];
-        var tabSalt=[""];
-
-        while ((monTableauSalt = saltRegex.exec(saltStr)) !== null) {
-        var saltMsg = 'Trouvé dans salt ' + monTableauSalt[0];
-        tabSalt.push(monTableauSalt[0]);
-        saltMsg +=
-        console.log(saltMsg);
+        if(!found){
+            missingSaltsInFleet.push(tabFleet[i]);
         }
+    }
+            document.getElementById('reponse3').innerHTML += missingSaltsInFleet;
+            document.getElementById('reponse3').innerHTML += "<h2>Total : </h2><b>" 
+                                                          + missingSaltsInFleet.length + "</b><hr>";
+    // console.table(missingSaltsInFleet);
 
+    document.getElementById('reponse4').innerHTML += "Nombre de ARI(s) extrait(s) de la liste nmap : <b>"
+                                                    +(tabNmap.length)+"</b>";
+    document.getElementById('reponse4').innerHTML += "<h2>Extrait de nmap :</h2>" + tabNmap;
 
-        // On parcourt et on enregistre dans "tabNmap" les N° des ARIs trouvés dans la liste Nmap
-        var nmapRegex = /((?<=00000000)[\w]{8})/g;
-        var nmapStr = entreeNmap;
-        var monTableauNmap=[""];
-        var tabNmap=[""];
-
-        while ((monTableauNmap = nmapRegex.exec(nmapStr)) !== null) {
-        var nmapMsg = 'Trouvé dans nmap ' + monTableauNmap[0];
-        tabNmap.push(monTableauNmap[0]);
-        nmapMsg +=
-        console.log(nmapMsg);
+    // Comparaison des correspondances des tableaux salt et nmap:
+    // => Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt 
+    document.getElementById('reponse4').innerHTML += "<h2>ARI(s) présent(s) dans la liste nmap et non présent(s) dans la liste salt:</h2>";
+    
+    let missingSaltsInNmap = [];
+    for (let i = 0 ; i<tabNmap.length ; i++){
+        let found = false;
+        for(let j = 0 ; j<tabSalt.length ; j++){
+            if(tabNmap[i]==tabSalt[j]){
+                found = true;
+                continue;
+            }
         }
-
-
-        // Affichage des résultats
-        document.getElementById('reponse').innerHTML = "<h1>Les résultats :</h1>";
-
-        document.getElementById('reponse2').innerHTML += "Nombre de ARI(s) extrait(s) de la liste fleet : <b>"
-                                                      +(tabFleet.length-1)+"</b>";
-        document.getElementById('reponse2').innerHTML += "<h2>Extrait de fleet :</h2>" + tabFleet + "<hr>";
-
-        document.getElementById('reponse3').innerHTML += "Nombre de ARI(s) extrait(s) de la liste salt : <b>"
-                                                      +(tabSalt.length-1)+"</b>";
-        document.getElementById('reponse3').innerHTML += "<h2>Extrait de salt :</h2>" + tabSalt;
-
-        document.getElementById('reponse4').innerHTML += "Nombre de ARI(s) extrait(s) de la liste nmap : <b>"
-                                                      +(tabNmap.length-1)+"</b>";
-        document.getElementById('reponse4').innerHTML += "<h2>Extrait de nmap :</h2>" + tabNmap;
-
-
-
-        // Comparaison des correspondances des tableaux fleet et salt:
-        // => IL faut trouver ces ARIS présents dans la liste FLEET et PAS présent dans la liste Salt
-
-        // Zone de test:
-        document.getElementById('reponse3').innerHTML += "<h2>ARIS présents dans la liste fleet et non présents dans la liste salt:</h2>";
-        document.getElementById('reponse3').innerHTML += "Lorem ipsum dolor sit amet consectetur adipisicing elit.<hr>";
-
-
-
-
-        // Comparaison des correspondances des tableaux salt et nmap:
-        // => Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt 
-
-        // Zone de test:
-        document.getElementById('reponse4').innerHTML += "<h2>ARIS présents dans la liste nmap et non présents dans la liste salt:</h2>";
-        document.getElementById('reponse4').innerHTML += "Lorem ipsum dolor sit amet consectetur adipisicing elit.<hr>";
-
-        // Conclusion finale: ( si besoin )
-        // document.getElementById('reponse5').innerHTML = "<h2>Pour conclure :</h2>";
-
-
-    }   
+        if(!found){
+            missingSaltsInNmap.push(tabNmap[i]);
+        }
+    }
+            document.getElementById('reponse4').innerHTML += missingSaltsInNmap;
+            document.getElementById('reponse4').innerHTML += "<h2>Total : </h2><b>" 
+                                                          + missingSaltsInNmap.length + "</b><hr>";
+    // console.table(missingSaltsInNmap);
+}   
 
 
 
