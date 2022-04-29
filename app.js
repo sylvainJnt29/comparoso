@@ -16,12 +16,15 @@ var tabFleet=[];
 var tabSalt=[];
 var tabNmap=[];
 
-// Récupération des entrées
-var entreeFleet = document.getElementById('texte1').value;
-var entreeSalt = document.getElementById('texte2').value;
-var entreeNmap = document.getElementById('texte3').value;
+
+
 
 function check(){
+
+    // Récupération des entrées
+    var entreeFleet = document.getElementById('texte1').value;
+    var entreeSalt = document.getElementById('texte2').value;
+    var entreeNmap = document.getElementById('texte3').value;
 
     // On parcourt et on enregistre dans "tabFleet" les N° des ARIs trouvés dans la liste fleet
     const fleetRegex = /^[\w]{8}/gm;
