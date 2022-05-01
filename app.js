@@ -69,11 +69,11 @@ function check(){
 
 
     // Affichage des résultats
-    document.getElementById('reponse').innerHTML = "<h1>Les résultats :</h1>";
+    document.getElementById('reponse').innerHTML = "<h2>Les résultats :</h2>";
 
     document.getElementById('reponse2').innerHTML += "Nombre de ARI(s) extrait(s) de la liste fleet : <b>"
                                                   +(tabFleet.length)+"</b>";
-    document.getElementById('reponse2').innerHTML += "<h2>Extrait de fleet :</h2>" + tabFleet + "<hr>";
+    document.getElementById('reponse2').innerHTML += "<h2>Extrait de fleet :</h2>" + tabFleet;
 
     document.getElementById('reponse3').innerHTML += "Nombre de ARI(s) extrait(s) de la liste salt : <b>"
                                                   +(tabSalt.length)+"</b>";
@@ -98,7 +98,7 @@ function check(){
     }
             document.getElementById('reponse3').innerHTML += missingSaltsInFleet;
             document.getElementById('reponse3').innerHTML += "<h2>Total : </h2><b>" 
-                                                          + missingSaltsInFleet.length + "</b><hr>";
+                                                          + missingSaltsInFleet.length + "</b>";
     // console.table(missingSaltsInFleet);
 
     document.getElementById('reponse4').innerHTML += "Nombre de ARI(s) extrait(s) de la liste nmap : <b>"
@@ -124,7 +124,7 @@ function check(){
     }
             document.getElementById('reponse4').innerHTML += missingSaltsInNmap;
             document.getElementById('reponse4').innerHTML += "<h2>Total : </h2><b>" 
-                                                          + missingSaltsInNmap.length + "</b><hr>";
+                                                          + missingSaltsInNmap.length + "</b>";
     // console.table(missingSaltsInNmap);
 }   
 

@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue sur comparOsO !</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Bienvenue !</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bienvenue sur comparOsO !</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Bienvenue sur le ComparOsO !</h1>
 
-    <!-- Partie Form -->
-    <form id="formulaire">
-        <h3>Liste complète: liste FLEET</h3>
-        <textarea name="texte1" id="texte1" cols="30" rows="10"></textarea>
-        <h3>Liste SALT: les ARIs répondant aux pings de salt</h3>
-        <textarea name="texte2" id="texte2" cols="30" rows="10"></textarea>        
-        <h3>Liste NMAP: les ARIs présents sur le réseau wifi de l'établissement</h3>
-        <textarea name="texte3" id="texte3" cols="30" rows="10"></textarea>
-    </form>
-    <hr>
-    <button type="submit" value="valider" id="bouton" onclick="check()">Valider</button>
-    <!-- Fin partie Form -->
-    
-    <!-- Partie renvoyée -->
-    <hr>
-    <div id="reponse"></div>
-    <div id="reponse2"></div>
-    <div id="reponse3"></div>
-    <div id="reponse4"></div>
-    <div id="reponse5"></div>
-    <!-- Fin partie renvoyée -->
-    
+        <!-- Partie Form -->
+        <form>
+            <h3>Liste complète: liste FLEET</h3>
+            <textarea name="texte1" id="texte1" cols="30" rows="10"></textarea>
+            <h3>Liste SALT: les ARIs répondant aux pings de salt</h3>
+            <textarea name="texte2" id="texte2" cols="30" rows="10"></textarea>        
+            <h3>Liste NMAP: les ARIs présents sur le réseau wifi de l'établissement</h3>
+            <textarea name="texte3" id="texte3" cols="30" rows="10"></textarea>
+        </form>
 
-    
+        <button type="submit" value="valider" id="bouton" onclick="check()">Valider</button>
+        <!-- Fin partie Form -->
+        
+        <!-- Partie renvoyée -->
+        <div id="reponse"></div>
+        <div id="reponse2"></div>
+        <div id="reponse3"></div>
+        <div id="reponse4"></div>
+        <div id="reponse5"></div>
+        <!-- Fin partie renvoyée -->
+        
 
-    
-    <script src="app.js"></script>
-</body>
+        
+        <script src="app.js"></script>
+    </body>
 </html>

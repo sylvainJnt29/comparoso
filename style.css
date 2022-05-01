@@ -1,12 +1,37 @@
 body{
     background-color: rgb(47, 131, 206);
     text-align: center;
+    margin: 2%;
+    font-size: 2em;
 }
 form{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 #reponse2,#reponse3,#reponse4,#reponse5{
     background-color: #00fbe2;
+    width: auto;
+    height: auto;
+    overflow-x:auto;
+    margin: 2%;
+    border: ridge 1px rgb(0, 0, 0);
+}
+#bouton{
+    font-size: 2em;
+    padding: 0% 2%;
+    color:white;
+    background-color: rgb(150, 206, 236);
+    margin-top: 2%;
+    border-radius: 15px;
+    border-style: none;
+}
+textarea{
+    background-color: rgb(150, 206, 236);
+}
+h1{
+    padding: 0% 2%;
+    color:white;
+    margin-top: 2%;
 }
 
