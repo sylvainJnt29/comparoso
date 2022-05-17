@@ -6,8 +6,14 @@ IL faut trouver ces ARIS présent dans la liste FLEET et PAS présent dans la li
 Il faut trouver les ARIs dans la NMAP et qui sont pas dans SALt 
 
 
-Notes: Ameliorer #reponse3 et #reponse4
-        => Mise en page sur du innerHTML
+Notes: Améliorer en rajoutant une liste :
+
+        ARI(s) présent(s) dans la liste Fleet et non présent(s) dans la liste nmap
+
+        Création d'un tableau synthétisant les résultats 
+
+        cadeau bonus: recracher le numéro de la chambre ( par la liste Fleet )
+
 
 */
 

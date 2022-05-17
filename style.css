@@ -1,6 +1,8 @@
 body{
     background-color: rgb(47, 131, 206);
     text-align: center;
+    justify-content: center;
+    align-items: center;
     margin: 2%;
     font-size: 2em;
 }
@@ -34,4 +36,8 @@ h1{
     color:white;
     margin-top: 2%;
 }
-
+table, td, tr{
+    border: 1px solid black;
+    background-color: rgb(150, 206, 236);
+    margin: auto;
+}
