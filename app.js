@@ -131,7 +131,28 @@ function check(){
             document.getElementById('reponse4').innerHTML += missingSaltsInNmap;
             document.getElementById('reponse4').innerHTML += "<h2>Total : </h2><b>" 
                                                           + missingSaltsInNmap.length + "</b>";
-    // console.table(missingSaltsInNmap);
+
+    // Comparaison des correspondances des tableaux Fleet et nmap:
+    // => Il faut trouver les ARIs présents dans la liste Fleet et absent de la liste Nmap 
+    document.getElementById('reponse5').innerHTML += "<h2>ARI(s) présent(s) dans la liste Fleet et non présent(s) dans la liste Nmap:</h2>";
+
+    let missingNmapsInFleet = [];
+    for (let i = 0 ; i<tabFleet.length ; i++){
+        let found = false;
+        for(let j = 0 ; j<tabNmap.length ; j++){
+            if(tabFleet[i]==tabNmap[j]){
+                found = true;
+                continue;
+            }
+        }
+        if(!found){
+            missingNmapsInFleet.push(tabFleet[i]);
+        }
+    }
+            document.getElementById('reponse5').innerHTML += missingNmapsInFleet;
+            document.getElementById('reponse5').innerHTML += "<h2>Total : </h2><b>" 
+                                                          + missingNmapsInFleet.length + "</b>";
+
 }   
 
 

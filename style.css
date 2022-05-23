@@ -11,8 +11,16 @@ form{
     justify-content: center;
     flex-direction: column;
 }
-#reponse2,#reponse3,#reponse4,#reponse5{
+#reponse2,#reponse3,#reponse4{
     background-color: #00fbe2;
+    width: auto;
+    height: auto;
+    overflow-x:auto;
+    margin: 2%;
+    border: ridge 1px rgb(0, 0, 0);
+}
+#reponse5{
+    background-color: #c09ae5;
     width: auto;
     height: auto;
     overflow-x:auto;
