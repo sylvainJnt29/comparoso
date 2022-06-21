@@ -156,51 +156,36 @@ function check(){
                                                     + missingNmapsInFleet.length + "</b>";
 
     // Début du tabl'Oso dynamique:
-    document.getElementById('reponse6').innerHTML += 
 
-                "<table>"
-                    + "<tr>"
-                        + "<th>Type de liste</th>"
-                        + "<th>Numéro du ARI 1</th>"
-                        + "<th>Numéro du ARI 2</th>"
-                        + "<th>Numéro du ARI X</th>"
-                    + "</tr>"
-                    + "<tr>"
-                        + "<td><i>Fleet</i></td>"
-                        // +"<td>"
-                        // let a = 5;
-                        // if(a > 10){
-                        //     document.getElementById('reponse6').innerHTML+= "<td>✔️</td>";
-                        // } else {
-                        //     document.getElementById('reponse6').innerHTML+="<td>❌</td>";
-                        // }
-                        // +"</td>"
-                        + "<td>" + trouvé + "</td>"
-                        + "<td>" + pasTrouvé + "</td>"
-                        + "<td> blabla </td>"
-                    + "</tr>"
-                    + "<tr>"
-                        + "<td><i>Salt</i></td>"
-                        + "<td>✔️</td>"
-                        + "<td>❌</td>"
-                        + "<td>❌</td>"
-                    + "</tr>"
-                    + "<tr>"
-                        + "<td><i>Nmap</i></td>"
-                        + "<td>❌</td>"
-                        + "<td>✔️</td>"
-                        + "<td>✔️</td>"
-                    + "</tr>"
-                    + "<tr>"
-                        + "<td><b>Chambre correspondante</b></td>"
-                        + "<td>404</td>"
-                        + "<td>113</td>"
-                        + "<td>777</td>"
-                    + "</tr>"
-                + "</table>";
+                        var a = [];
+                        for(let i = 0 ; i<tabFleet.length ; i++){
+                        a.push(tabFleet[i]);
+                        document.getElementById('reponse6').innerHTML += 
 
-
-
+                        "<table>"
+                            + "<tr>"
+                                + "<th>Type de liste</th>"
+                                + "<th>" + a[i] + "</th>"
+                            + "</tr>"
+                            + "<tr>"
+                                + "<td><i>Fleet</i></td>"
+                                + "<td>" + trouvé + "</td>"
+                            + "</tr>"
+                            + "<tr>"
+                                + "<td><i>Salt</i></td>"
+                                + "<td>" + trouvé + "</td>"
+                            + "</tr>"
+                            + "<tr>"
+                                + "<td><i>Nmap</i></td>"
+                                + "<td>" + pasTrouvé + "</td>"
+                            + "</tr>"
+                            + "<tr>"
+                                + "<td><b>Chambre correspondante</b></td>"
+                                + "<td> 404 </td>"
+                            + "</tr>"
+                            + "<br>"
+                        + "</table>";
+                        }
 
 }   
 
