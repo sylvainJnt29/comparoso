@@ -150,12 +150,13 @@ function check(){
             missingNmapsInFleet.push(tabFleet[i]);
         }
     }
-            document.getElementById('reponse5').innerHTML += missingNmapsInFleet;
-            document.getElementById('reponse5').innerHTML += "<h2>Total : </h2><b>" 
-                                                          + missingNmapsInFleet.length + "</b>";
-}   
 
-            document.getElementById('reponse6').innerHTML += 
+    document.getElementById('reponse5').innerHTML += missingNmapsInFleet;
+    document.getElementById('reponse5').innerHTML += "<h2>Total : </h2><b>" 
+                                                    + missingNmapsInFleet.length + "</b>";
+
+    // Début du tabl'Oso dynamique:
+    document.getElementById('reponse6').innerHTML += 
 
                 "<table>"
                     + "<tr>"
@@ -197,6 +198,13 @@ function check(){
                         + "<td>777</td>"
                     + "</tr>"
                 + "</table>";
+
+
+
+
+}   
+
+            
 
 
 
