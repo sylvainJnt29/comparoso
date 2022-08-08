@@ -14,6 +14,8 @@ Notes: Améliorer en rajoutant une liste :
 
         cadeau bonus: recracher le numéro de la chambre ( par la liste Fleet )
 
+        Pour retrouver la v1: virer le display none des reponses en css
+
 
 */
 
@@ -21,9 +23,9 @@ Notes: Améliorer en rajoutant une liste :
 var tabFleet=[];
 var tabSalt=[];
 var tabNmap=[];
-var trouvé = "✔️";
-var pasTrouvé = "❌";
-
+var found = "✔️";
+var notFound = "❌";
+var room = "404";
 
 
 function check(){
@@ -157,34 +159,45 @@ function check(){
 
     // Début du tabl'Oso dynamique:
 
-                        var a = [];
-                        for(let i = 0 ; i<tabFleet.length ; i++){
-                        a.push(tabFleet[i]);
-                        document.getElementById('reponse6').innerHTML += 
+                        var tabloso = [];
 
-                        "<table>"
-                            + "<tr>"
-                                + "<th>Type de liste</th>"
-                                + "<th>" + a[i] + "</th>"
-                            + "</tr>"
-                            + "<tr>"
-                                + "<td><i>Fleet</i></td>"
-                                + "<td>" + trouvé + "</td>"
-                            + "</tr>"
-                            + "<tr>"
-                                + "<td><i>Salt</i></td>"
-                                + "<td>" + trouvé + "</td>"
-                            + "</tr>"
-                            + "<tr>"
-                                + "<td><i>Nmap</i></td>"
-                                + "<td>" + pasTrouvé + "</td>"
-                            + "</tr>"
-                            + "<tr>"
-                                + "<td><b>Chambre correspondante</b></td>"
-                                + "<td> 404 </td>"
-                            + "</tr>"
-                            + "<br>"
-                        + "</table>";
+                        document.getElementById('reponse6').innerHTML += 
+                        "Nombre de ARI(s) extrait(s) de la liste fleet : <b>"
+                        +(tabFleet.length)+"</b><br>";
+                        document.getElementById('reponse6').innerHTML += 
+                        "Nombre de ARI(s) extrait(s) de la liste salt : <b>"
+                        +(tabSalt.length)+"</b><br>";
+                        document.getElementById('reponse6').innerHTML += 
+                        "Nombre de ARI(s) extrait(s) de la liste nmap : <b>"
+                        +(tabNmap.length)+"</b><br>";
+
+                        for(let i = 0 ; i<tabFleet.length ; i++){
+                            tabloso.push(tabFleet[i]);
+                            document.getElementById('reponse6').innerHTML += 
+
+                            "<table>"
+                                + "<tr>"
+                                    + "<th>Type de liste</th>"
+                                    + "<th>" + tabloso[i] + "</th>"
+                                + "</tr>"
+
+                                + "<tr>"
+                                    + "<td><i>Fleet</i></td>"
+                                    + "<td>" + found + "</td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td><i>Salt</i></td>"
+                                    + "<td>" + notFound + "</td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td><i>Nmap</i></td>"
+                                    + "<td>" + found + "</td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td><b>Chambre correspondante</b></td>"
+                                    + "<td><b>" + room + "</b></td>";
+                                + "</tr>"
+                            + "</table>"
                         }
 
 }   
@@ -194,9 +207,10 @@ function check(){
 
 
 
-
-
-    
-    
-
++"Nombre de ARI(s) extrait(s) de la liste fleet : <b>"
++(tabFleet.length)+"</b>";
++"Nombre de ARI(s) extrait(s) de la liste salt : <b>"
++(tabSalt.length)+"</b>";
++"Nombre de ARI(s) extrait(s) de la liste nmap : <b>"
++(tabNmap.length)+"</b>";
 
