@@ -15,6 +15,7 @@ Notes: Améliorer en rajoutant une liste :
         cadeau bonus: recracher le numéro de la chambre ( par la liste Fleet )
 
         Pour retrouver la v1: virer le display none des reponses en css
+        Pour passer en v2: remettre le display none
 
 
 */
